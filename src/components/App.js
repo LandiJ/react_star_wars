@@ -6,18 +6,19 @@ class App extends Component {
     super(props);
     this.state = {
       vehicles: [],
+      tempPilot: "",
       value: "",
       pilot: ""
     };
   }
   handleNameChange(event) {
-    var pilot = this.state.pilot;
-    pilot = event.target.value;
-    this.setState({ pilot });
+    var tempPilot = this.state.tempPilot;
+    tempPilot = event.target.value;
+    this.setState({ tempPilot });
   }
   handleSubmit(event) {
     event.preventDefault();
-    return this.setState({ pilot: this.state.pilot });
+    return this.setState({ pilot: this.state.tempPilot });
   }
   componentDidMount() {
     let update = localStorage.getItem("vehicles");
@@ -94,7 +95,7 @@ class App extends Component {
                 name="pilot"
                 onChange={this.handleNameChange.bind(this)}
                 type="text"
-                value={this.state.pilot}
+                value={this.state.tempPilot}
               />
               <br />
               <input className="btn btn-primary" type="submit" value="Submit" />
